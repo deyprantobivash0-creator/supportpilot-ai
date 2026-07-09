@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupportPilot AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SupportPilot AI</h1>
+    <p>AI Customer Support + CRM</p>
+
+    <!-- Customer Information -->
+
+    <input
+        type="text"
+        id="customer_name"
+        placeholder="Customer Name">
+
+    <br><br>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email Address">
+
+    <br><br>
+
+    <input
+        type="text"
+        id="company"
+        placeholder="Company Name">
+
+    <br><br>
+
+<label><b>Priority</b></label>
+
+<br>
+
+<select id="priority">
+
+    <option value="Low">
+        Low
+    </option>
+
+    <option value="Medium" selected>
+        Medium
+    </option>
+
+    <option value="High">
+        High
+    </option>
+
+    <option value="Critical">
+        Critical
+    </option>
+
+</select>
+
+<br><br>
+
+    <textarea
+        id="message"
+        placeholder="Describe your issue..."
+        rows="8"></textarea>
+
+    <br><br>
+
+    <button onclick="sendMessage()">
+        Create Support Ticket
+    </button>
+
+    <button onclick="loadDashboard()">
+        CRM Dashboard
+    </button>
+
+    <hr>
+
+    <h2>CRM Dashboard</h2>
+
+    <div id="dashboard">
+        Dashboard will appear here...
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
