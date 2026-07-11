@@ -3,42 +3,26 @@
 // =========================
 
 async function sendMessage() {
+	const customer_name = document.getElementById("customer_name").value;
+	const email = document.getElementById("email").value;
+	const company = document.getElementById("company").value;
+	const priority = document.getElementById("priority").value;
+	const message = document.getElementById("message").value;
 
-    const customer_name = document.getElementById("customer_name").value;
-    const email = document.getElementById("email").value;
-    const company = document.getElementById("company").value;
-    const priority = document.getElementById("priority").value;
-    const message = document.getElementById("message").value;
+	const response = await fetch("/chat", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ customer_name, email, company, priority, message })
+	});
 
-    const response = await fetch("/chat", {
+	const data = await response.json();
 
-        method: "POST",
+	// Ticket created successfully
+	alert("Support ticket created successfully!");
 
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-
-            customer_name,
-            email,
-            company,
-            priority,
-            message
-
-        })
-
-    });
-
-    const data = await response.json();
-
-// Ticket created successfully
-alert("Support ticket created successfully!");
-
-loadDashboard();
+	loadDashboard();
 
 }
-
 
 // =========================
 // Load CRM Dashboard
@@ -47,185 +31,226 @@ loadDashboard();
 async function loadDashboard() {
 
     const response = await fetch("/dashboard");
-
     const data = await response.json();
-let html = `
 
-<div class="dashboard">
+    const search = document
+.getElementById("searchTicket")
+?.value
+.toLowerCase() || "";
 
-<div class="stats-grid">
+const status = document
+.getElementById("statusFilter")
+?.value || "All Status";
 
-<div class="stat-card">
+const priority = document
+.getElementById("priorityFilter")
+?.value || "All Priority";
 
-<div style="font-size:32px;">📋</div>
+    let html = `
 
-<div class="stat-number">
-${data.total}
-</div>
+    <div class="dashboard">
 
-<div class="stat-title">
-Total Tickets
-</div>
+        <div class="dashboard-header">
 
-</div>
+            <div class="dashboard-title">
+                <h1>SupportPilot AI</h1>
+                <p>Customer Experience Dashboard</p>
+            </div>
 
-<div class="stat-card">
-
-<div style="font-size:32px;">🟢</div>
-
-<div class="stat-number">
-${data.open}
-</div>
-
-<div class="stat-title">
-Open Tickets
-</div>
-
-</div>
-
-<div class="stat-card">
-
-<div style="font-size:32px;">🟡</div>
-
-<div class="stat-number">
-${data.closed}
-</div>
-
-<div class="stat-title">
-Closed Tickets
-</div>
-
-</div>
-
-<div class="stat-card">
-
-<div style="font-size:32px;">🔴</div>
-
-<div class="stat-number">
-${data.high}
-</div>
-
-<div class="stat-title">
-High Priority
-</div>
-
-</div>
-
-</div>
-
-<h2 style="margin-bottom:20px;">
-
-Recent Tickets
-
-</h2>
-
-<div class="ticket-list">
-
-`;
-
-    data.recent.forEach(ticket => {
-    html += `
-
-<div class="ticket-card">
-
-    <div class="ticket-header">
-
-        <div class="ticket-number">
-
-            ${ticket.ticket_number}
+            <div class="dashboard-date">
+                <div>${new Date().toLocaleDateString()}</div>
+            </div>
 
         </div>
 
-        <div>
+        <div class="stats-grid">
 
-            ${ticket.created_at}
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-number">${data.total}</div>
+                <div class="stat-title">Total Tickets</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <div class="stat-number">${data.open}</div>
+                <div class="stat-title">Open Tickets</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🟡</div>
+                <div class="stat-number">${data.closed}</div>
+                <div class="stat-title">Closed Tickets</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🔴</div>
+                <div class="stat-number">${data.high}</div>
+                <div class="stat-title">High Priority</div>
+            </div>
 
         </div>
 
-    </div>
+        <h2>Recent Tickets</h2>
 
-    <div class="ticket-section">
+        <div class="ticket-list">
+    `;
 
-        <span class="ticket-label">👤 Customer:</span>
+    data.recent
+.filter(ticket=>{
 
-        ${ticket.customer_name}
+    const matchesSearch=
 
-    </div>
+        ticket.customer_name.toLowerCase().includes(search)
 
-    <div class="ticket-section">
+        ||
 
-        <span class="ticket-label">🏢 Company:</span>
+        ticket.company.toLowerCase().includes(search)
 
-        ${ticket.company}
+        ||
 
-    </div>
+        ticket.question.toLowerCase().includes(search);
 
-    <div class="ticket-section">
+    const matchesStatus=
 
-        <span class="ticket-label">📧 Email:</span>
+        status==="All Status"
 
-        ${ticket.email}
+        ||
 
-    </div>
+        ticket.status===status;
 
-    <div class="ticket-section">
+    const matchesPriority=
 
-        <span class="ticket-label">❓ Issue:</span>
+        priority==="All Priority"
 
-        ${ticket.question}
+        ||
 
-    </div>
+        ticket.priority===priority;
 
-    <div class="ticket-section">
+    return matchesSearch
 
-        <span class="ticket-label">📌 Priority:</span>
+        &&
 
-        ${ticket.priority}
+        matchesStatus
 
-    </div>
+        &&
 
-    <div class="ticket-section">
+        matchesPriority;
 
-        <span class="ticket-label">📍 Status:</span>
+})
 
-        ${ticket.status}
+.forEach(ticket=>{
 
-    </div>
+        html += `
 
-    <div class="ticket-actions">
+        <div class="ticket-card">
 
-        <button onclick="changeStatus(${ticket.ticket_id}, 'Open')">
+            <div class="ticket-header">
 
-            Open
+                <div class="ticket-number">
+                    ${ticket.ticket_number}
+                </div>
 
-        </button>
+                <div class="ticket-date">
+                    ${ticket.created_at}
+                </div>
 
-        <button onclick="changeStatus(${ticket.ticket_id}, 'In Progress')">
+            </div>
 
-            In Progress
+            <div class="ticket-grid">
 
-        </button>
+                <div class="ticket-section">
+                    <span class="ticket-label">👤 Customer</span>
+                    ${ticket.customer_name}
+                </div>
 
-        <button onclick="changeStatus(${ticket.ticket_id}, 'Closed')">
+                <div class="ticket-section">
+                    <span class="ticket-label">🏢 Company</span>
+                    ${ticket.company}
+                </div>
 
-            Closed
+                <div class="ticket-section">
+                    <span class="ticket-label">📧 Email</span>
+                    ${ticket.email}
+                </div>
 
-        </button>
+                <div class="ticket-section">
+                    <span class="ticket-label">🤖 Assigned</span>
+                    ${ticket.assigned_to}
+                </div>
 
-    </div>
+                <div class="ticket-section">
+                    <span class="ticket-label">📌 Priority</span>
 
-</div>
+                    <span class="badge priority-${ticket.priority.toLowerCase()}">
+                        ${ticket.priority}
+                    </span>
 
-`;
+                </div>
+
+                <div class="ticket-section">
+                    <span class="ticket-label">📍 Status</span>
+
+                    <span class="badge status-${ticket.status.toLowerCase().replace(/\s+/g,"-")}">
+                        ${ticket.status}
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="ticket-issue">
+
+                <div class="ticket-issue-title">
+
+                    ❓ Customer Issue
+
+                </div>
+
+                <div class="ticket-issue-text">
+
+                    ${ticket.question}
+
+                </div>
+
+            </div>
+
+            <div class="ticket-actions">
+
+                <button onclick="changeStatus(${ticket.ticket_id},'Open')">
+
+                    Open
+
+                </button>
+
+                <button onclick="changeStatus(${ticket.ticket_id},'In Progress')">
+
+                    In Progress
+
+                </button>
+
+                <button onclick="changeStatus(${ticket.ticket_id},'Closed')">
+
+                    Closed
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
 
     });
-html += `
 
-</div>
+    html += `
 
-</div>
+        </div>
 
-`;
+    </div>
+
+    `;
+
     document.getElementById("dashboard").innerHTML = html;
 
 }
@@ -257,3 +282,135 @@ async function changeStatus(ticket_id, status) {
     loadDashboard();
 
 }
+
+
+async function loadCustomerProfile(customerId) {
+
+    const response = await fetch(`/customer/${customerId}`);
+    const customer = await response.json();
+     const ticketResponse = await fetch(
+    `/customer_tickets/${encodeURIComponent(customer.email)}`
+   );
+
+const tickets = await ticketResponse.json();
+
+
+    document.getElementById("dashboard").innerHTML = `
+
+    <div class="profile-page">
+
+        <button class="secondary-btn"
+                onclick="loadCustomers()">
+            ← Back to Customers
+        </button>
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div>
+
+                <h2>${customer.customer_name}</h2>
+
+                <p>${customer.company}</p>
+
+                <span class="status-badge open">
+                    Premium Customer
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-section">
+
+            <h3>📊 Customer Overview</h3>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <h2>${customer.total_tickets}</h2>
+
+                    <p>Total Tickets</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h2>${customer.last_contact}</h2>
+
+                    <p>Last Contact</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="profile-section">
+
+            <h3>📞 Contact Information</h3>
+
+            <p><strong>Email:</strong> ${customer.email}</p>
+
+            <p><strong>Company:</strong> ${customer.company}</p>
+
+        </div>
+
+        <div class="profile-section">
+
+            <h3>📝 Internal Notes</h3>
+
+            <p>${customer.notes || "No notes yet."}</p>
+
+        </div>
+
+    </div>
+
+    `;
+}
+
+
+
+async function loadCustomers() {
+
+    const response = await fetch("/customers");
+
+    const customers = await response.json();
+
+    let html = "";
+
+    customers.forEach(customer => {
+
+        html += `
+        <div class="ticket-card">
+
+            <h3>${customer.customer_name}</h3>
+
+            <p><strong>Company:</strong> ${customer.company}</p>
+
+            <p><strong>Email:</strong> ${customer.email}</p>
+
+            <p><strong>Total Tickets:</strong> ${customer.total_tickets}</p>
+
+            <p><strong>Last Contact:</strong> ${customer.last_contact}</p>
+
+           
+         <button
+         class="primary-btn"onclick="loadCustomerProfile(${customer.customer_id})">
+         Open Profile
+         
+         </button>
+
+
+
+        </div>
+        `;
+    });
+
+    document.getElementById("dashboard").innerHTML = html;
+}
+

@@ -5,88 +5,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SupportPilot AI</title>
-
-    <link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tickets.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/badges.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
 </head>
 
 <body>
 
-<div class="container">
+<div class="app-layout">
 
-    <h1>SupportPilot AI</h1>
-    <p>AI Customer Support + CRM</p>
+    <!-- ================= SIDEBAR ================= -->
 
-    <!-- Customer Information -->
+    <aside class="sidebar">
 
-    <input
-        type="text"
-        id="customer_name"
-        placeholder="Customer Name">
+        <div class="logo">
 
-    <br><br>
+            <h2>🌿 SupportPilot AI</h2>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Email Address">
+            <p>Customer Experience</p>
 
-    <br><br>
+        </div>
 
-    <input
-        type="text"
-        id="company"
-        placeholder="Company Name">
+        <nav>
 
-    <br><br>
+            <a href="#" class="active">🏠 Dashboard</a>
 
-<label><b>Priority</b></label>
+            <a href="#">🎫 Tickets</a>
 
-<br>
+            <a href="#" onclick="loadCustomers()">👥 Customers</a>
 
-<select id="priority">
+            <a href="#">🤖 AI Assistant</a>
 
-    <option value="Low">
-        Low
-    </option>
+            <a href="#">📚 Knowledge Base</a>
 
-    <option value="Medium" selected>
-        Medium
-    </option>
+            <a href="#">📈 Analytics</a>
 
-    <option value="High">
-        High
-    </option>
+            <a href="#">⚙ Settings</a>
 
-    <option value="Critical">
-        Critical
-    </option>
+        </nav>
 
-</select>
+        <div class="sidebar-footer">
 
-<br><br>
+            🟢 System Online
 
-    <textarea
-        id="message"
-        placeholder="Describe your issue..."
-        rows="8"></textarea>
+        </div>
 
-    <br><br>
+    </aside>
 
-    <button onclick="sendMessage()">
-        Create Support Ticket
-    </button>
+    <!-- ================= MAIN ================= -->
 
-    <button onclick="loadDashboard()">
-        CRM Dashboard
-    </button>
+    <main class="main-content">
+
+        <div class="container">
+
+    <!-- Dashboard Header -->
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-title">
+
+            <h1>Good Evening, Pranto 👋</h1>
+
+            <p>Customer Experience Center</p>
+
+        </div>
+
+        <div class="dashboard-right">
+
+            <input
+                class="search-box"
+                type="text"
+                placeholder="🔍 Search tickets...">
+
+            <button class="notification-btn">
+
+                🔔
+
+            </button>
+
+            <div class="profile-card">
+
+                👤 Admin
+
+            </div>
+
+        </div>
+
+    </div>
 
     <hr>
 
-    <h2>CRM Dashboard</h2>
+            <div class="ticket-form-card">
 
-    <div id="dashboard">
-        Dashboard will appear here...
+    <div class="form-title">
+
+        ✨ Create Support Ticket
+
     </div>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Customer Name</label>
+
+            <input
+            type="text"
+            id="customer_name"
+            placeholder="John Smith">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Email Address</label>
+
+            <input
+            type="email"
+            id="email"
+            placeholder="john@email.com">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Company</label>
+
+            <input
+            type="text"
+            id="company"
+            placeholder="ABC Logistics">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Priority</label>
+
+            <select id="priority">
+
+                <option>Low</option>
+                <option selected>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Customer Issue</label>
+
+        <textarea
+        id="message"
+        rows="7"
+        placeholder="Describe the customer's issue..."></textarea>
+
+    </div>
+
+    <div class="form-buttons">
+
+        <button
+        class="primary-btn"
+        onclick="sendMessage()">
+
+            Create Ticket
+
+        </button>
+
+        <button
+        class="secondary-btn"
+        onclick="loadDashboard()">
+
+            Refresh Dashboard
+
+        </button>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="toolbar">
+
+    <input
+        id="searchTicket"
+        class="search-box"
+        placeholder="🔍 Search customer, company or issue..."
+        onkeyup="loadDashboard()">
+
+    <select
+        id="statusFilter"
+        onchange="loadDashboard()">
+
+        <option>All Status</option>
+        <option>Open</option>
+        <option>In Progress</option>
+        <option>Closed</option>
+
+    </select>
+
+    <select
+        id="priorityFilter"
+        onchange="loadDashboard()">
+
+        <option>All Priority</option>
+        <option>Critical</option>
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+
+    </select>
+
+</div>
+
+<div id="dashboard"></div>
+
+            <hr>
+
+            <div id="dashboard">
+
+                Dashboard will appear here...
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
 

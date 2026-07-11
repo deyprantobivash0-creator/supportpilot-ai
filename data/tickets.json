@@ -1,0 +1,28 @@
+[
+    {
+        "ticket_id": 1,
+        "ticket_number": "SP-20260711-0001",
+        "customer_name": "john smith ",
+        "email": "js26@gmail.com",
+        "company": "willow solutions",
+        "question": "delayed shippment",
+        "ai_reply": "Hello! I understand you're experiencing a delayed shipment.\n\nTo help me look into this for you, could you please provide your order number or tracking number?",
+        "status": "Open",
+        "priority": "High",
+        "assigned_to": "AI",
+        "created_at": "2026-07-11 05:00:54"
+    },
+    {
+        "ticket_id": 2,
+        "ticket_number": "SP-20260711-0002",
+        "customer_name": "Richard Grey   ",
+        "email": "rich@yahoo.com",
+        "company": "  GreyDots",
+        "question": "delayed shipments",
+        "ai_reply": "Hello! I understand you're concerned about delayed shipments.\n\nTo help me look into this for you, could you please provide your order number or any specific tracking information you have? This will allow me to check the status of your shipment and provide an update.",
+        "status": "Open",
+        "priority": "High",
+        "assigned_to": "AI",
+        "created_at": "2026-07-11 05:02:38"
+    }
+]

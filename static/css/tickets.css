@@ -1,0 +1,369 @@
+/* ======================================================
+   SUPPORTPILOT AI
+   PREMIUM TICKET CARDS
+====================================================== */
+
+.ticket-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    margin-top:25px;
+
+}
+
+/* ========================================= */
+
+.ticket-card{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+
+    padding:28px;
+
+    transition:.3s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.ticket-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+/* Left Accent */
+
+.ticket-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:7px;
+
+    height:100%;
+
+    background:#7FAF8E;
+
+}
+
+/* ========================================= */
+
+.ticket-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:22px;
+
+    border-bottom:1px solid #ECECEC;
+
+    padding-bottom:16px;
+
+}
+
+.ticket-number{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#2E2E2E;
+
+}
+
+.ticket-date{
+
+    color:#7A7A7A;
+
+    font-size:14px;
+
+}
+
+/* ========================================= */
+
+.ticket-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px 40px;
+
+    margin-bottom:22px;
+
+}
+
+.ticket-section{
+
+    font-size:15px;
+
+    color:#555;
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+}
+
+.ticket-label{
+
+    font-weight:600;
+
+    color:#2E2E2E;
+
+}
+
+/* ========================================= */
+
+.ticket-issue{
+
+    margin-top:15px;
+
+    background:#F7F8F5;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    border:1px solid #ECECEC;
+
+}
+
+.ticket-issue-title{
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    color:#2E2E2E;
+
+}
+
+.ticket-issue-text{
+
+    color:#555;
+
+    line-height:1.6;
+
+}
+
+/* ========================================= */
+
+.ticket-actions{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:24px;
+
+    flex-wrap:wrap;
+
+}
+
+.ticket-actions button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+/* Open */
+
+.ticket-actions button:nth-child(1){
+
+    background:#DDF5E5;
+
+    color:#18794E;
+
+}
+
+.ticket-actions button:nth-child(1):hover{
+
+    background:#7FAF8E;
+
+    color:white;
+
+}
+
+/* Progress */
+
+.ticket-actions button:nth-child(2){
+
+    background:#FFF2CF;
+
+    color:#C58500;
+
+}
+
+.ticket-actions button:nth-child(2):hover{
+
+    background:#F4B400;
+
+    color:white;
+
+}
+
+/* Closed */
+
+.ticket-actions button:nth-child(3){
+
+    background:#FDE2E2;
+
+    color:#C62828;
+
+}
+
+.ticket-actions button:nth-child(3):hover{
+
+    background:#D93025;
+
+    color:white;
+
+}
+
+/* ========================================= */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* ---------- STATUS ---------- */
+
+.status-open{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.status-in-progress{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.status-closed{
+
+    background:#E5E7EB;
+
+    color:#374151;
+
+}
+
+/* ---------- PRIORITY ---------- */
+
+.priority-low{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.priority-medium{
+
+    background:#DBEAFE;
+
+    color:#1D4ED8;
+
+}
+
+.priority-high{
+
+    background:#FED7AA;
+
+    color:#C2410C;
+
+}
+
+.priority-critical{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+/* ========================================= */
+
+@media(max-width:900px){
+
+.ticket-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.ticket-header{
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.ticket-actions{
+
+flex-direction:column;
+
+}
+
+.ticket-actions button{
+
+width:100%;
+
+}
+
+}

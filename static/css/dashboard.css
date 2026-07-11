@@ -1,0 +1,321 @@
+/* ======================================================
+   DASHBOARD
+====================================================== */
+
+.dashboard{
+
+    margin-top:40px;
+
+}
+
+/* ---------- HEADER ---------- */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.dashboard-title h1{
+
+    font-size:34px;
+
+    margin-bottom:6px;
+
+}
+
+.dashboard-title p{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.dashboard-date{
+
+    text-align:right;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+/* ---------- KPI GRID ---------- */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:24px;
+
+    margin-bottom:40px;
+
+}
+
+/* ---------- KPI CARD ---------- */
+
+.stat-card{
+
+    background:linear-gradient(180deg,#ffffff,#fbfbfb);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.25s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.stat-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:6px;
+
+    height:100%;
+
+    background:var(--sage);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.stat-icon{
+
+    font-size:34px;
+
+    margin-bottom:16px;
+
+}
+
+.stat-number{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:var(--charcoal);
+
+    margin-bottom:8px;
+
+}
+
+.stat-title{
+
+    font-size:15px;
+
+    color:#666;
+
+}
+
+.ticket-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+/* ======================================================
+   TOP HEADER
+====================================================== */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.dashboard-title h1{
+
+    font-size:34px;
+
+    margin-bottom:6px;
+
+    color:var(--charcoal);
+
+}
+
+.dashboard-title p{
+
+    color:#666;
+
+}
+
+.dashboard-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/* Search */
+
+.search-box{
+
+    width:280px;
+
+    padding:14px 18px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:white;
+
+    transition:.25s;
+
+}
+
+.search-box:focus{
+
+    border-color:var(--sage);
+
+    box-shadow:0 0 0 4px rgba(127,175,142,.15);
+
+}
+
+/* Notification */
+
+.notification-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.25s;
+
+}
+
+.notification-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:var(--sage);
+
+    color:white;
+
+}
+
+/* Profile */
+
+.profile-card{
+
+    background:var(--sage);
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ===========================================
+   FILTER TOOLBAR
+=========================================== */
+
+.toolbar{
+
+    display:flex;
+
+    gap:18px;
+
+    margin:35px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.toolbar input{
+
+    flex:1;
+
+}
+
+.toolbar select{
+
+    width:190px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.toolbar select:focus{
+
+    border-color:var(--sage);
+
+}

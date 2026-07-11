@@ -234,7 +234,7 @@ transform:translateY(-2px);
 
 .ticket-actions button:nth-child(1){
 
-background:#4CAF50;
+background:#47b75de2;
 
 color:white;
 
@@ -253,5 +253,183 @@ color:white;
 background:#D93025;
 
 color:white;
+
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+
+display:inline-block;
+
+padding:6px 14px;
+
+border-radius:999px;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-left:8px;
+
+}
+
+/* ---------- STATUS ---------- */
+
+.status-open{
+
+background:#D1FAE5;
+
+color:#047857;
+
+}
+
+.status-in-progress{
+
+background:#FEF3C7;
+
+color:#B45309;
+
+}
+
+.status-closed{
+
+background:#E5E7EB;
+
+color:#374151;
+
+}
+
+/* ---------- PRIORITY ---------- */
+
+.priority-low{
+
+background:#DCFCE7;
+
+color:#15803D;
+
+}
+
+.priority-medium{
+
+background:#DBEAFE;
+
+color:#1D4ED8;
+
+}
+
+.priority-high{
+
+background:#FED7AA;
+
+color:#C2410C;
+
+}
+
+.priority-critical{
+
+background:#FEE2E2;
+
+color:#B91C1C;
+
+}
+
+.profile-page{
+
+    background:#F7F6F2;
+
+    padding:30px;
+
+    border-radius:18px;
+
+}
+
+.profile-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin:25px 0;
+
+}
+
+.profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#7A9E7E;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+}
+
+.profile-section{
+
+    background:white;
+
+    padding:20px;
+
+    margin-top:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.stat-card{
+
+    background:#F1F5F1;
+
+    border-left:6px solid #7A9E7E;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+}
+
+.stat-card h2{
+
+    margin:0;
+
+    color:#2F3A35;
+
+}
+
+.stat-card p{
+
+    color:#666;
 
 }

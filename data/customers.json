@@ -1,72 +1,24 @@
 [
     {
-        "ticket_id": 1,
-        "customer_name": "Unknown",
-        "email": "",
-        "company": "",
-        "question": "I want to return my laptop.",
-        "ai_reply": "Hello! I can certainly help you with your laptop return.\n\nTo assist you further, please provide me with the order number for your purchase. This will allow me to look up your order details and provide you with the correct return instructions and policy information.",
-        "status": "In Progress",
-        "priority": "Normal",
-        "created_at": "2026-07-07 02:27:13"
+        "customer_id": 1,
+        "customer_name": "john smith ",
+        "email": "js26@gmail.com",
+        "company": "willow solutions",
+        "total_tickets": 1,
+        "created_at": "2026-07-11 05:00:54",
+        "last_contact": "2026-07-11 05:00:54",
+        "notes": "",
+        "tags": []
     },
     {
-        "ticket_id": 2,
-        "customer_name": "Unknown",
-        "email": "",
-        "company": "",
-        "question": "I want to return my laptop.",
-        "ai_reply": "Certainly, I can help you with your laptop return.\n\nTo assist you further, could you please provide me with your order number and the date of purchase? This will allow me to look up your order details and check the applicable return policy.",
-        "status": "Closed",
-        "priority": "Normal",
-        "created_at": "2026-07-07 03:00:23"
-    },
-    {
-        "ticket_id": 3,
-        "customer_name": "Unknown",
-        "email": "",
-        "company": "",
-        "question": "My order hasn't arrived yet.",
-        "ai_reply": "Hello! I'm sorry to hear your order hasn't arrived yet. I understand this can be frustrating.\n\nTo help you with this, could you please provide your order number? Once I have that, I can look into the status of your shipment for you.",
-        "status": "Open",
-        "priority": "Normal",
-        "created_at": "2026-07-07 03:00:44"
-    },
-    {
-        "ticket_id": 4,
-        "customer_name": "Unknown",
-        "email": "",
-        "company": "",
-        "question": "Can I change my shipping address?",
-        "ai_reply": "Hi there!\n\nI can definitely look into that for you.\n\nTo see if we can change the shipping address for your order, please provide your order number. The ability to make changes often depends on the current status of your shipment.",
-        "status": "Closed",
-        "priority": "Normal",
-        "created_at": "2026-07-07 03:01:00"
-    },
-    {
-        "ticket_id": 5,
-        "ticket_number": "SP-20260708-0005",
-        "customer_name": "dj",
-        "email": "dj212@gmail.com",
-        "company": "DJDC BATTERY",
-        "question": "wanna return 50 battery",
-        "ai_reply": "Hello! I can certainly help you with that.\n\nTo process your return for the 50 batteries, could you please provide your order number? Once I have that, I can look up your purchase and guide you through the next steps.",
-        "status": "In Progress",
-        "priority": "High",
-        "assigned_to": "AI",
-        "created_at": "2026-07-08 07:28:42"
-    },
-    {
-        "ticket_id": 6,
-        "ticket_number": "SP-20260709-0006",
-        "customer_name": "roy dipta",
-        "email": "rd99@gmail.co",
-        "company": "dc ltd.",
-        "question": "mismatched products.",
-        "ai_reply": "Hello! I'm sorry to hear you've received mismatched products.\n\nTo help me understand and resolve this for you, could you please provide a few more details?\n\n*   What is your **order number**?\n*   Could you describe the **products you expected** versus the **products you actually received**?\n*   Were there any specific item numbers or descriptions on the packaging that differ from your order confirmation?\n\nOnce I have this information, I'll be able to look into it for you.",
-        "status": "In Progress",
-        "priority": "Critical",
-        "assigned_to": "AI",
-        "created_at": "2026-07-09 02:23:33"
+        "customer_id": 2,
+        "customer_name": "Richard Grey   ",
+        "email": "rich@yahoo.com",
+        "company": "  GreyDots",
+        "total_tickets": 1,
+        "created_at": "2026-07-11 05:02:38",
+        "last_contact": "2026-07-11 05:02:38",
+        "notes": "",
+        "tags": []
     }
 ]

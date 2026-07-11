@@ -1,0 +1,61 @@
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.primary-btn{
+
+    background:var(--sage);
+
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--sage-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.secondary-btn{
+
+    background:white;
+
+    color:var(--sage-dark);
+
+    border:1px solid var(--sage);
+
+    padding:15px 30px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.secondary-btn:hover{
+
+    background:var(--sage-light);
+
+}

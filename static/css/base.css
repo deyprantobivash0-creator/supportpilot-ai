@@ -1,0 +1,97 @@
+/* ======================================================
+   APP LAYOUT
+====================================================== */
+
+.app-layout{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+.sidebar{
+
+    width:260px;
+
+    background:#2E2E2E;
+
+    color:white;
+
+    padding:35px 25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+}
+
+.logo h2{
+
+    color:white;
+
+    margin-bottom:8px;
+
+}
+
+.logo p{
+
+    color:#CFCFCF;
+
+}
+
+.sidebar nav{
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.sidebar nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    transition:.25s;
+
+}
+
+.sidebar nav a:hover{
+
+    background:#7FAF8E;
+
+}
+
+.sidebar nav .active{
+
+    background:#7FAF8E;
+
+}
+
+.sidebar-footer{
+
+    color:#B8E6C2;
+
+    font-size:14px;
+
+}
+
+.main-content{
+
+    flex:1;
+
+    padding:35px;
+
+}
