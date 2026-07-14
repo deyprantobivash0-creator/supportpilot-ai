@@ -101,3 +101,44 @@ def search_customers(keyword):
     return results
 
 
+def update_customer_notes(customer_id, notes):
+
+    customers = load_customers()
+
+    for customer in customers:
+
+        if customer["customer_id"] == int(customer_id):
+
+            customer["notes"] = notes
+
+            save_customers(customers)
+
+            return True
+
+    return False
+
+def add_customer_tag(customer_id, tag):
+
+    customers = load_customers()
+
+    tag = tag.strip()
+
+    if tag == "":
+        return False
+
+    for customer in customers:
+
+        if customer["customer_id"] == int(customer_id):
+
+            if tag not in customer["tags"]:
+
+                customer["tags"].append(tag)
+
+                save_customers(customers)
+
+            return True
+
+    return False
+
+
+

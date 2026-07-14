@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 from backend.tools.ai_service import support_chat
 from backend.tools.crm import save_customer
-from backend.customer import get_all_customers
-from backend.customer import get_customer
+from backend.customer import (
+    get_customer,
+    get_all_customers,
+    update_customer_notes,
+    add_customer_tag
+)
 from backend.tools.crm import get_all_tickets
 from backend.tools.crm import (
     save_customer,
@@ -113,6 +117,38 @@ def customer_tickets(email):
             customer_tickets.append(ticket)
 
     return jsonify(customer_tickets)
+
+@app.route("/customer/<int:customer_id>/notes", methods=["POST"])
+def save_customer_notes(customer_id):
+
+    data = request.get_json()
+
+    notes = data.get("notes", "")
+
+    success = update_customer_notes(customer_id, notes)
+
+    if success:
+
+        return jsonify({"success": True})
+
+    return jsonify({"success": False}), 404
+
+
+@app.route("/customer/<int:customer_id>/tags", methods=["POST"])
+def save_customer_tag(customer_id):
+
+    data = request.get_json()
+
+    tag = data.get("tag", "")
+
+    success = add_customer_tag(customer_id, tag)
+
+    if success:
+
+        return jsonify({"success": True})
+
+    return jsonify({"success": False}), 404
+
 
 
 

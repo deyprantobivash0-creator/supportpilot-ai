@@ -362,15 +362,199 @@ const tickets = await ticketResponse.json();
 
         <div class="profile-section">
 
-            <h3>📝 Internal Notes</h3>
+    <h3>🏷 Customer Tags</h3>
 
-            <p>${customer.notes || "No notes yet."}</p>
+    <div class="tag-container">
+
+        ${
+            !customer.tags || customer.tags.length === 0
+
+            ? "<p>No tags yet.</p>"
+
+            : customer.tags.map(tag => `
+
+                <span class="customer-tag">
+
+                    ${tag}
+
+                </span>
+
+            `).join("")
+        }
+
+    </div>
+
+    <br>
+
+    <input
+        id="newTag"
+        class="tag-input"
+        placeholder="Add new tag..."
+    >
+
+    <button
+        class="primary-btn"
+        onclick="addCustomerTag(${customer.customer_id})">
+
+        + Add Tag
+
+    </button>
+
+</div>
+
+        <div class="profile-section">
+        
+    
+      <div class="profile-section">
+
+       <h3>🎫 Recent Tickets</h3>
+
+      ${
+        tickets.length === 0
+        ?
+
+        "<p>No tickets found.</p>"
+
+        :
+
+        tickets.map(ticket => `
+
+            <div class="ticket-card">
+
+                <h4>${ticket.ticket_number}</h4>
+
+                <p>${ticket.question}</p>
+
+                <p>
+
+                    <strong>Status:</strong>
+
+                    ${ticket.status}
+
+                </p>
+
+                <p>
+
+                    <strong>Priority:</strong>
+
+                    ${ticket.priority}
+
+                </p>
+
+            </div>
+
+        `).join("")
+    }
+
+</div>
+
+
+
+       <h3>📝 Internal Notes</h3>
+
+ <textarea
+ id="customerNotes"
+ class="notes-box"
+ placeholder="Write internal notes here..."
+ rows="8"
+ >${customer.notes || ""}</textarea>
+
+ <br><br>
+
+ <button
+ class="primary-btn"
+ onclick="saveCustomerNotes(${customer.customer_id})">
+
+ 💾 Save Notes
+
+ </button>
+ 
 
         </div>
 
     </div>
 
     `;
+}
+
+async function saveCustomerNotes(customerId){
+
+
+const notes = document.getElementById("customerNotes").value;
+
+const response = await fetch(`/customer/${customerId}/notes`,{
+
+    method:"POST",
+
+    headers:{
+        "Content-Type":"application/json"
+    },
+
+    body:JSON.stringify({
+
+        notes:notes
+
+    })
+
+});
+
+const result = await response.json();
+
+if(result.success){
+
+    alert("✅ Notes saved successfully.");
+
+}else{
+
+    alert("❌ Failed to save notes.");
+
+}
+
+
+}
+
+async function addCustomerTag(customerId){
+
+    const input = document.getElementById("newTag");
+
+    const tag = input.value.trim();
+
+    if(tag === ""){
+
+        alert("Please enter a tag.");
+
+        return;
+
+    }
+
+    const response = await fetch(`/customer/${customerId}/tags`, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            tag: tag
+        })
+
+    });
+
+    const result = await response.json();
+
+    if(result.success){
+
+        input.value = "";
+
+        loadCustomerProfile(customerId);
+
+    }else{
+
+        alert("Unable to save tag.");
+
+    }
+
 }
 
 
