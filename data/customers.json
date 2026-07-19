@@ -21,7 +21,9 @@
         "created_at": "2026-07-11 05:02:38",
         "last_contact": "2026-07-11 05:02:38",
         "notes": "Customer prefers WhatsApp.\n\nUsually imports electronics.\n\nHigh priority client.",
-        "tags": []
+        "tags": [
+            "vip"
+        ]
     },
     {
         "customer_id": 3,
@@ -31,6 +33,41 @@
         "total_tickets": 3,
         "created_at": "2026-07-12 11:19:08",
         "last_contact": "2026-07-12 11:19:12",
+        "notes": "regular mac buyer",
+        "tags": []
+    },
+    {
+        "customer_id": 4,
+        "customer_name": "pollob dey",
+        "email": "pd29@gmail.com",
+        "company": "ASP enterprise",
+        "total_tickets": 2,
+        "created_at": "2026-07-14 08:54:39",
+        "last_contact": "2026-07-14 08:56:11",
+        "notes": "",
+        "tags": [
+            "VIP"
+        ]
+    },
+    {
+        "customer_id": 5,
+        "customer_name": "h",
+        "email": "h",
+        "company": "n",
+        "total_tickets": 1,
+        "created_at": "2026-07-15 10:11:14",
+        "last_contact": "2026-07-15 10:11:14",
+        "notes": "",
+        "tags": []
+    },
+    {
+        "customer_id": 6,
+        "customer_name": "rohan roy",
+        "email": "ra12@gmail.com",
+        "company": "rr co.",
+        "total_tickets": 1,
+        "created_at": "2026-07-18 03:29:57",
+        "last_contact": "2026-07-18 03:29:57",
         "notes": "",
         "tags": []
     }

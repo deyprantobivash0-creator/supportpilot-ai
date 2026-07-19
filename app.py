@@ -1,16 +1,20 @@
 from flask import Flask, render_template, request, jsonify
-from backend.tools.ai_service import support_chat
-from backend.tools.crm import save_customer
+from backend.tools.ai_service import (
+    support_chat,
+    analyze_customer
+)
+
 from backend.customer import (
     get_customer,
     get_all_customers,
     update_customer_notes,
     add_customer_tag
 )
-from backend.tools.crm import get_all_tickets
 from backend.tools.crm import (
     save_customer,
+    get_all_tickets,
     get_dashboard,
+    get_dashboard_stats,
     update_ticket
 )
 app = Flask(
@@ -89,9 +93,6 @@ def update():
 def customers():
 
     return jsonify(get_all_customers())
-
-@app.route("/customers")
-
 @app.route("/customer/<int:customer_id>", methods=["GET"])
 def customer_profile(customer_id):
 
@@ -149,6 +150,23 @@ def save_customer_tag(customer_id):
 
     return jsonify({"success": False}), 404
 
+@app.route("/dashboard_stats", methods=["GET"])
+def dashboard_stats():
+
+    stats = get_dashboard_stats()
+
+    return jsonify(stats)
+
+@app.route("/ai_insights", methods=["POST"])
+def ai_insights():
+
+    data = request.json
+
+    message = data.get("message", "")
+
+    result = analyze_customer(message)
+
+    return jsonify(result)
 
 
 

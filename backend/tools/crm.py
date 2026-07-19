@@ -79,6 +79,55 @@ def save_customer(customer_name, email, company, priority, message, reply=None):
 
     return ticket
 
+def get_dashboard_stats():
+
+    tickets = get_all_tickets()
+
+    total_tickets = len(tickets)
+
+    open_tickets = sum(
+        1 for ticket in tickets
+        if ticket.get("status", "").lower() == "open"
+    )
+
+    closed_tickets = sum(
+        1 for ticket in tickets
+        if ticket.get("status", "").lower() == "closed"
+    )
+
+    high_priority = sum(
+        1 for ticket in tickets
+        if ticket.get("priority", "").lower() in ["high", "critical"]
+    )
+
+    customer_emails = set()
+
+    companies = set()
+
+    for ticket in tickets:
+
+        if ticket.get("email"):
+            customer_emails.add(ticket["email"].lower())
+
+        if ticket.get("company"):
+            companies.add(ticket["company"])
+
+    return {
+
+        "total_tickets": total_tickets,
+
+        "open_tickets": open_tickets,
+
+        "closed_tickets": closed_tickets,
+
+        "high_priority": high_priority,
+
+        "total_customers": len(customer_emails),
+
+        "total_companies": len(companies)
+
+    }
+
 
 # -----------------------------
 # Dashboard Statistics
